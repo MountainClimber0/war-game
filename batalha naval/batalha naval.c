@@ -1,5 +1,8 @@
 #include <stdio.h>
 #define TAM_STRING 50
+#define MAX_PAISES 5
+#include <string.h>
+#include "uteis.c"
 
  typedef struct Territorio
 {
@@ -7,18 +10,35 @@
        char paises [TAM_STRING];
   char corTerritorio [TAM_STRING];
      int numTropas;
-    int numPaises;
+
 } Territorio;
+
+
 int main() {
-    Territorio territorios;
-printf("insira o numero de paises:\n");
-scanf("%d", &territorios.numPaises);
-for (int i = 0; i < territorios.numPaises; i++) {
-    
-    printf("Insira o nome do pais %d: \n", i);
-    scanf("%s", &territorios.paises[i+1]);
-    
-    
+
+ 
+struct Territorio territorio[MAX_PAISES];
+
+int numPaises = 0;
+
+printf("Bem vindo ao jogo de batalha naval!\n");
+printf("Para comecar insira o numero de paises:\n");
+scanf("%d", &numPaises);
+limparBuffer();
+
+for (int i = 0; i < numPaises ; i++) {
+    printf("Insira o nome do pais %d: \n", i+1);
+    scanf("%s", territorio[i].paises);
+
+}
+
+printf("seus paises sao:\n");
+
+for(int i = 0; i < numPaises ; i++){
+
+  printf("%d - %s\n", i + 1, territorio[i].paises);
+
+
 }
 
 return 0;
